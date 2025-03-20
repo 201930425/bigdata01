@@ -1,0 +1,1 @@
+This repository manages the codes used in the first semester of the Big Data Programming class in 2025.
