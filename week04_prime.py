@@ -9,7 +9,6 @@ def is_prime(number):
         while i * i <= number:
             if number % i == 0:
                 return False
-            #print(i, end=" ")
             i = i + 1
     else:
         return False
