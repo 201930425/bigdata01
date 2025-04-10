@@ -2,9 +2,10 @@ drinks = ["아이스 아메리카노","카페 라떼", "수박 주스", "딸기�
 prices = [1500,2500, 4000, 4200]
 
 total_price = 0
-amounts = list()
-for _ in range(len(drinks)):
-    amounts.append(0)
+# amounts = list()
+# for _ in range(len(drinks)):
+#     amounts.append(0)
+amounts = [0 for _ in range(len(drinks))] #list compregension(리스트축약)
 
 total_price = 0
 
