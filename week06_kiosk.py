@@ -20,15 +20,11 @@ for j in range(len(drinks)):
 menu_texts = menu_texts + f"{len(drinks)+1}) 주문종료 :  "
 
 while True:
-    menu = input(menu_texts)
-    if menu == "1":
-        order_process(int(menu)-1)
-    elif menu == "2":
-        order_process(int(menu)-1)
-    elif menu == "3":
-        order_process(int(menu)-1)
-    elif menu == "4" :
-        "주문종료"
+    menu =int(input(menu_texts))
+    if len(drinks)>= menu >= 1:
+        order_process(menu-1)
+    elif menu == len(drinks)+1:
+        print("주문을 종료합니다")
         break
     else:
         print(f"{menu}번 메뉴는 존재하지 않습니다. 아래 메뉴에서 골라주세요")
