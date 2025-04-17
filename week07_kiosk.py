@@ -3,7 +3,7 @@ prices = [1500,2500, 4000, 4200]
 total_price = 0
 amounts = [0] * len(drinks)#amounts = [0 for _ in range(len(drinks))]
 
-def order_process(idx):
+def order_process(idx :int) -> None:
     """
     주문 처리 함수 1) 주문 디스플레이 2) 총 주문 금액 누산 3) 수량 업데이트
     :return:
@@ -13,7 +13,7 @@ def order_process(idx):
     total_price = total_price + prices[idx]
     amounts[idx] = amounts[idx] + 1
 
-def display_menu():
+def display_menu() -> str:
     """
     음료 선택 메뉴 디스플레이 기능
     :return:
@@ -23,7 +23,7 @@ def display_menu():
     menu_texts = menu_texts + f"{len(drinks) + 1}) 주문종료 : "
     return menu_texts
 
-def print_receipt():
+def print_receipt() -> None:
     """
     영수증 출력기능
     :return: 없음
