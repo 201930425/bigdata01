@@ -35,3 +35,10 @@ def print_receipt() -> None:
         if amounts[i] > 0:
             print(f"{drinks[i]:^20}{prices[i]:^6}{amounts[i]:^6}{prices[i] * amounts[i]:^6}")
     print(f"총 주문 금액 : {total_price}원")
+
+def test() -> None:
+    """
+    앞으로 키오스크에 추가할 기능
+    :return:
+    """
+    pass
