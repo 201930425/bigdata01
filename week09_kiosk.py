@@ -1,13 +1,11 @@
-import kiosk
-
-
+import kiosk as kk
 
 while True:
     try:
-        menu =int(input(kiosk.display_menu()))
-        if len(kiosk.drinks)>= menu >= 1:
-            kiosk.order_process(menu-1)
-        elif menu == len(kiosk.drinks)+1:
+        menu =int(input(kk.display_menu()))
+        if len(kk.drinks)>= menu >= 1:
+            kk.order_process(menu-1)
+        elif menu == len(kk.drinks)+1:
             print("주문을 종료합니다")
             break
         else:
@@ -15,4 +13,4 @@ while True:
     except ValueError:
         print(f"문자를 입력할 수 없습니다. 숫자를 입력해주세요")
 
-kiosk.print_receipt()
+kk.print_receipt()
