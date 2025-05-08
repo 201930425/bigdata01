@@ -7,6 +7,8 @@ amounts = [0] * len(drinks)
 DISCOUNT_THRESHOLD = 10000 #할인이 적용되는 임계값 (임계값 이상이면 할인 적용)
 DISCOUNT_RATE = 0.1 # 할인율
 
+
+
 def apply_discount(price: int) -> float:
     """
     총 금액이 특정 금액(임계값)을 넘어서면 할인율 적용 함수
@@ -16,6 +18,24 @@ def apply_discount(price: int) -> float:
     if price >=DISCOUNT_THRESHOLD:
         return price * (1 - DISCOUNT_RATE)
     return price
+
+def get_ticket_number() -> int:
+    """
+    주문 번호표 처리 기능 함수
+    :return:
+    """
+    try:
+        with open("ticket.txt", "r") as fp:
+            number = int(fp.read())
+    except FileNotFoundError:
+        number = 0
+
+    number = number + 1
+
+    with open("ticket.txt", "w") as fp:
+        fp.write(str(number))
+
+    return number
 
 def order_process(idx :int) -> None:
     """
