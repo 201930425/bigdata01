@@ -3,13 +3,19 @@ prices = [1500,2500, 4000, 4200]
 total_price = 0
 amounts = [0] * len(drinks)
 
+#할인 적용 정책
+DISCOUNT_THRESHOLD = 10000 #할인이 적용되는 임계값 (임계값 이상이면 할인 적용)
+DISCOUNT_RATE = 0.1 # 할인율
+
 def apply_discount(price: int) -> float:
     """
     총 금액이 특정 금액(임계값)을 넘어서면 할인율 적용 함수
     :param price: 할인 전 총 금액
     :return: 할인이 적용된 금액 또는 할인이 적용되지 않는 금액
     """
-    pass
+    if price >=DISCOUNT_THRESHOLD:
+        return price * (1 - DISCOUNT_RATE)
+    return price
 
 def order_process(idx :int) -> None:
     """
@@ -40,6 +46,7 @@ def print_receipt() -> None:
     for i in range(len(drinks)):
         if amounts[i] > 0:
             print(f"{drinks[i]:^20}{prices[i]:^6}{amounts[i]:^6}{prices[i] * amounts[i]:^6}")
+
     print(f"총 주문 금액 : {total_price}원")
 
 def test() -> None:
