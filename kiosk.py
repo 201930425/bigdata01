@@ -47,7 +47,15 @@ def print_receipt() -> None:
         if amounts[i] > 0:
             print(f"{drinks[i]:^20}{prices[i]:^6}{amounts[i]:^6}{prices[i] * amounts[i]:^6}")
 
-    print(f"총 주문 금액 : {total_price}원")
+    discounted_price = apply_discount(total_price)
+    discount = total_price - discounted_price
+
+    print(f"할인 전 총 주문 금액 : {total_price}원")
+    if discount >0:
+        print(f"할인금액 {discount}원")
+        print(f"할인 적용 후 지불하실 총 금액은 {discounted_price}원 입니다.")
+    else:
+        print(f"할인이 적용되지 않았습니다.\n지불하실 총 금액인 {total_price}원 입니다.")
 
 def test() -> None:
     """
