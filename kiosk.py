@@ -7,7 +7,23 @@ amounts = [0] * len(drinks)
 DISCOUNT_THRESHOLD = 10000 #할인이 적용되는 임계값 (임계값 이상이면 할인 적용)
 DISCOUNT_RATE = 0.1 # 할인율
 
-
+def run() -> None:
+    """
+    키오스크 실행(구동) 함수
+    :return: None
+    """
+    while True:
+        try:
+            menu = int(input(display_menu()))
+            if len(drinks) >= menu >= 1:
+                order_process(menu - 1)
+            elif menu == len(drinks)+1:
+                print("주문을 종료합니다")
+                break
+            else:
+                print(f"{menu}번 메뉴는 존재하지 않습니다. 아래 메뉴에서 골라주세요")
+        except ValueError:
+            print(f"문자를 입력할 수 없습니다. 숫자를 입력해주세요")
 
 def apply_discount(price: int) -> float:
     """
