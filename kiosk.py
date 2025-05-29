@@ -83,11 +83,11 @@ def order_process(idx :int) -> None:
 
 def display_menu() -> str:
     """
-    음료 선택 메뉴 디스플레이 기능
+    날씨 부가 정보 및 음료 선택 메뉴 디스플레이 기능
     :return:
     """
     try:
-        url = f"https://wttr.in/suwon?format=%C+%t&lang=ko"
+        url = f"https://wttr.in/suwon?format=2"
         response = requests.get(url)
         if response.status_code == 200:
             print(response.text.strip())
