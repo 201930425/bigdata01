@@ -1,6 +1,8 @@
 # import datetime
 from datetime import datetime
 import sqlite3
+from typing import reveal_type
+
 import requests
 
 drinks = ["아이스 아메리카노","카페 라떼", "수박 주스", "딸기주스"]
@@ -83,18 +85,10 @@ def order_process(idx :int) -> None:
 
 def display_menu() -> str:
     """
-    날씨 부가 정보 및 음료 선택 메뉴 디스플레이 기능
+    음료 선택 메뉴 디스플레이 기능
     :return:
     """
-    try:
-        url = f"https://wttr.in/suwon?format=2"
-        response = requests.get(url)
-        if response.status_code == 200:
-            print(response.text.strip())
-        else:
-            print(f"상태 코드 : {response.status_code}")
-    except Exception as err:
-        print(f"오류 : {err}")
+    print(get_weather_info())
     print("=" * 30)
     menu_texts = "".join([f"{j + 1}) {drinks[j]} {prices[j]}원\n" for j in range(len(drinks))])
     menu_texts = menu_texts + f"{len(drinks) + 1}) 주문종료 : "
@@ -122,9 +116,20 @@ def print_receipt() -> None:
     print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
-def test() -> None:
+def get_weather_info() -> str:
     """
-    앞으로 키오스크에 추가할 기능
-    :return:
+    날씨정보(https://wttr.in)
+    :return: 날씨정보를 요약한 문자열
     """
-    pass
+    try:
+        url = f"https://wttr.in/suwon?format=2"
+        response = requests.get(url)
+        if response.status_code == 200:
+            # print(response.text.strip())
+            return response.text.strip()
+        else:
+            # print(f"상태 코드 : {response.status_code}")
+            return f"상태 코드 : {response.status_code}"
+    except Exception as err:
+        # print(f"오류 : {err}")
+        return f"오류 : {err}"
